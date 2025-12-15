@@ -1,0 +1,27 @@
+FROM node:18.16.0
+
+WORKDIR /app
+
+# Install pnpm
+RUN npm install -g pnpm@8.14.3
+
+# Copy package files
+COPY package.json pnpm-lock.yaml ./
+COPY server/package.json ./server/
+COPY client/package.json ./client/
+COPY common/package.json ./common/
+
+# Install dependencies
+RUN pnpm install
+
+# Copy source code
+COPY . .
+
+# Generate schema
+RUN sh scripts/generate.sh
+
+# Expose ports
+EXPOSE 3000 8080
+
+# Start in watch mode
+CMD ["pnpm", "run", "watch"]
