@@ -1,0 +1,44 @@
+{
+  "name": "coral-talk-dev",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:18",
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {},
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "18.16.0"
+    }
+  },
+  "postCreateCommand": "sh scripts/pnpm-ci.sh && sh scripts/generate.sh",
+  "forwardPorts": [3000, 8080, 27017, 6379],
+  "portsAttributes": {
+    "3000": {
+      "label": "Coral Server",
+      "onAutoForward": "notify"
+    },
+    "8080": {
+      "label": "Coral Client", 
+      "onAutoForward": "openPreview"
+    },
+    "27017": {
+      "label": "MongoDB",
+      "onAutoForward": "ignore"
+    },
+    "6379": {
+      "label": "Redis",
+      "onAutoForward": "ignore"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-vscode.vscode-typescript-next",
+        "bradlc.vscode-tailwindcss", 
+        "esbenp.prettier-vscode",
+        "ms-vscode.vscode-json",
+        "GraphQL.vscode-graphql"
+      ],
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash"
+      }
+    }
+  }
+}
