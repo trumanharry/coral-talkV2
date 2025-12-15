@@ -5,14 +5,17 @@ WORKDIR /app
 # Install pnpm
 RUN npm install -g pnpm@8.14.3
 
-# Copy package files
-COPY package.json pnpm-lock.yaml ./
+# Copy package files (only the ones that exist)
+COPY package.json ./
 COPY server/package.json ./server/
 COPY client/package.json ./client/
 COPY common/package.json ./common/
 
-# Install dependencies
-RUN pnpm install
+# Copy scripts needed for installation
+COPY scripts ./scripts
+
+# Install dependencies using the project's scripts
+RUN sh scripts/pnpm-ci.sh
 
 # Copy source code
 COPY . .
@@ -23,5 +26,5 @@ RUN sh scripts/generate.sh
 # Expose ports
 EXPOSE 3000 8080
 
-# Start in watch mode
-CMD ["pnpm", "run", "watch"]
+# Start in development mode
+CMD ["sh", "-c", "cd server && pnpm run start:development"]
