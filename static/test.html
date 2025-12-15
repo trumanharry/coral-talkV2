@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coral Talk Test - Same Origin</title>
+</head>
+<body>
+    <h1>Test Article</h1>
+    <p>This is a sample article to test the Coral commenting system.</p>
+    
+    <div id="coral_thread">Loading Coral comments...</div>
+    
+    <script src="/assets/js/embed.js"></script>
+    <script>
+        Coral.createStreamEmbed({
+            id: "coral_thread",
+            autoRender: true,
+            rootURL: window.location.origin,
+        });
+    </script>
+</body>
+</html>
