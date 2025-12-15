@@ -13,7 +13,8 @@ services:
       - MONGODB_URI=mongodb://mongo:27017/coral
       - REDIS_URI=redis://redis:6379
       - SIGNING_SECRET=dev-secret-change-me-in-production
-      - ROOT_URL=http://localhost:3000
+      - ROOT_URL=https://sturdy-space-trout-4xx7599w4x63qjxq-5000.app.github.dev
+      - CORS_ORIGIN=https://sturdy-space-trout-4xx7599w4x63qjxq-8080.app.github.dev
     volumes:
       - ./server:/app/server
       - ./client:/app/client
