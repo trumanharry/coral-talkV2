@@ -15,11 +15,11 @@ services:
       - SIGNING_SECRET=dev-secret-change-me-in-production
       - ROOT_URL=https://sturdy-space-trout-4xx7599w4x63qjxq-5000.app.github.dev
       - CORS_ORIGIN=https://sturdy-space-trout-4xx7599w4x63qjxq-8080.app.github.dev
+      - TALK_DISABLE_STATIC_SERVER=false
     volumes:
       - ./server:/app/server
       - ./client:/app/client
       - ./common:/app/common
-    
   mongo:
     image: mongo:8.0.3
     restart: always
@@ -27,7 +27,6 @@ services:
       - "27017:27017"
     volumes:
       - mongo-data:/data/db
-      
   redis:
     image: redis:7.2.5
     restart: always
@@ -35,7 +34,6 @@ services:
       - "6379:6379"
     volumes:
       - redis-data:/data
-
 volumes:
   mongo-data:
   redis-data:
