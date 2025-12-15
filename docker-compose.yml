@@ -1,9 +1,6 @@
-version: '3.8'
 services:
   talk:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: coralproject/talk:9
     restart: always
     ports:
       - "3000:3000"
@@ -17,6 +14,10 @@ services:
       - REDIS_URI=redis://redis:6379
       - SIGNING_SECRET=dev-secret-change-me-in-production
       - ROOT_URL=http://localhost:3000
+    volumes:
+      - ./server:/app/server
+      - ./client:/app/client
+      - ./common:/app/common
     
   mongo:
     image: mongo:8.0.3
