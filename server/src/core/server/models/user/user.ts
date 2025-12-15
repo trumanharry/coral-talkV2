@@ -745,10 +745,10 @@ export async function findOrCreateUserInput(
       },
     },
     notifications: {
-      onReply: false,
-      onFeatured: false,
-      onModeration: false,
-      onStaffReplies: false,
+      onReply: true,
+      onFeatured: true,
+      onModeration: true,
+      onStaffReplies: true,
       digestFrequency: GQLDIGEST_FREQUENCY.NONE,
     },
     inPageNotifications: {

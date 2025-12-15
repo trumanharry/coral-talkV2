@@ -242,10 +242,10 @@ export const createUserFixture = (defaults: Defaults<User> = {}): User => {
     role: GQLUSER_ROLE.COMMENTER,
     moderationScopes: {},
     notifications: {
-      onReply: false,
-      onFeatured: false,
-      onModeration: false,
-      onStaffReplies: false,
+      onReply: true,
+      onFeatured: true,
+      onModeration: true,
+      onStaffReplies: true,
       digestFrequency: GQLDIGEST_FREQUENCY.NONE,
     },
     inPageNotifications: {

@@ -19,22 +19,11 @@ interface Props {
 }
 
 const PreferencesContainer: FunctionComponent<Props> = (props) => {
-  const showInternalNotificationSettings =
-    !props.settings.externalNotifications?.active;
-  const showInPageNotificationSettings =
-    !!props.settings.inPageNotifications?.enabled;
   return (
     <HorizontalGutter spacing={4}>
       <BioContainer viewer={props.viewer} settings={props.settings} />
-      {showInternalNotificationSettings && (
-        <>
-          {showInPageNotificationSettings ? (
-            <InPageNotificationSettingsContainer viewer={props.viewer} />
-          ) : (
-            <EmailNotificationSettingsContainer viewer={props.viewer} />
-          )}
-        </>
-      )}
+      <InPageNotificationSettingsContainer viewer={props.viewer} />
+      <EmailNotificationSettingsContainer viewer={props.viewer} />
       <MediaSettingsContainer viewer={props.viewer} settings={props.settings} />
       <IgnoreUserSettingsContainer viewer={props.viewer} />
     </HorizontalGutter>

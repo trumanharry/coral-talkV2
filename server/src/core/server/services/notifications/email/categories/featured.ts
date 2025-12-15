@@ -11,10 +11,8 @@ export const featured: NotificationCategory<CommentFeaturedCoralEventPayload> =
   {
     name: "featured",
     process: async (ctx, input) => {
-      // Don't send email notification if in-page notifications enabld
-      if (ctx.tenant?.inPageNotifications?.enabled) {
-        return null;
-      }
+      // Previously: block email when tenant in-page notifications were enabled.
+      // We now allow both in-page and email notifications to be sent concurrently.
 
       // Get the comment that was featured.
       const comment = await ctx.comments.load(input.data.commentID);
