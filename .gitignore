@@ -1,0 +1,8 @@
+# don't include any OS/editor files
+.env
+.idea/
+.vs
+.docz
+.next
+*.swp
+*.DS_STORE
