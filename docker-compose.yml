@@ -3,11 +3,11 @@ services:
   talk:
     build:
       context: .
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile
     restart: always
     ports:
       - "3000:3000"
-      - "8080:8080"
+      - "5000:5000"
     depends_on:
       - mongo
       - redis
@@ -17,10 +17,6 @@ services:
       - REDIS_URI=redis://redis:6379
       - SIGNING_SECRET=dev-secret-change-me-in-production
       - ROOT_URL=http://localhost:3000
-    volumes:
-      - .:/app
-      - /app/node_modules
-    command: ["pnpm", "run", "watch"]
     
   mongo:
     image: mongo:8.0.3
